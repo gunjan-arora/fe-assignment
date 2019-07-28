@@ -1,0 +1,37 @@
+<input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv" />    
+
+<mat-form-field>
+  <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+ 
+  <!-- First Name Column -->
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+  </ng-container>
+
+  <!-- Last Name Column -->
+  <ng-container matColumnDef="surName">
+    <mat-header-cell *matHeaderCellDef>Last Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.surName}} </mat-cell>
+  </ng-container>
+
+  <!-- Issue Count Column -->
+  <ng-container matColumnDef="issueCount">
+    <mat-header-cell *matHeaderCellDef>Issue Count </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.issueCount}} </mat-cell>
+  </ng-container>
+
+  <!-- Date of birth Column -->
+  <ng-container matColumnDef="dob">
+    <mat-header-cell *matHeaderCellDef> Date of birth </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.dob}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
+
